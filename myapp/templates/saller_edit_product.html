@@ -1,0 +1,67 @@
+{% include 'saller_index.html' %}
+
+<form method="POST" action="{% url 'saller_edit_product' pk=product.pk %}" enctype="multipart/form-data">
+	{% csrf_token %}
+	<center>
+
+		<span class="txt9">
+			Product Brand
+		</span>
+
+		<div>
+			<input type="text" name="product_brand" value="{{product.product_brand}}" readonly="readonly">
+		</div>
+
+		<br>
+		<br>
+		<span class="txt9">
+			Product Price
+		</span>
+
+		<div>
+			<input type="text" name="product_price" value="{{product.product_price}}">
+		</div>
+		<br>
+		<br>
+
+		<span class="txt9">
+			Product Descriptin
+		</span>
+
+		<div>
+			<input type="text" name="product_desc" value="{{product.product_desc}}">
+		</div>
+		<br>
+		<br>
+
+		<span class="txt9">
+			Current Image
+		</span>
+
+		<tr>
+			<td>Current Image</td>
+			<td colspan="2" align="t-center">
+				<img src="{{product.product_image.url}}" width="100px" height="100px">
+			</td>
+		</tr>
+		<br>
+		<br>
+
+
+		<span class="txt9">
+			Select New Image
+		</span>
+
+		<div>
+			<input type="file" name="product_image">
+		</div>
+		<br>
+		<br>
+
+		<div>
+			<button type="submit" name="action" value="Edit Product">
+				Edit Product
+			</button> 
+		</div>
+	</center>
+</form>

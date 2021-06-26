@@ -1,0 +1,45 @@
+{% include 'hearder.html' %}
+
+
+	<center>
+		{% if carts %}
+			<form name="Checkout" method="POST" action="{% url 'pay' %}">
+				{% csrf_token %}
+					<h1>Checkout : {{net_price}}
+					<input type="hidden" name="amount" value="{{net_price}}">
+					<input type="submit" name="action" value="Checkout" class="btn-btn-primary">
+				</h1>
+			</form>
+		{% else %}
+			<span> No Items In Cart </span>
+		{% endif %}
+		
+		<br><br><br>
+	</center>
+<div class="row">	
+	{% for i in carts %}
+
+	<div class="col-sm-3" style="margin-bottom: 100px">
+		<div class="card" style="width: 18rem;">
+			<img class="card-img-top" src="{{i.product.product_image.url}}" alt="Card image cap" width="450px" height="300px">
+			<div class="card-body">
+				<h5 class="card-title">Brand : {{i.product.product_brand}}</h5>
+				<h5 class="card-title">Price : {{i.product.product_price}}</h5>
+				<h5 class="card-title">Desc  : {{i.product.product_desc}}</h5>
+
+				<form name="change_qty" method="POST" action="{% url 'change_qty' %}">
+					{% csrf_token %}
+					<input type="hidden" name="pk" value="{{i.pk}}">
+					Quantity :  <input type="number" name="qty" value="{{i.qty}}" min="1" max="10" onchange=
+					"this.form.submit();">
+				</form>
+
+				<p class="card-title">Price :{{i.price}}</p>
+				<p class="card-title">Price * Quantity :{{i.total_price}}</p>
+				<a href="{% url 'user_details_product' pid=i.product.pk %}" class="btn btn-primary">More Details</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+

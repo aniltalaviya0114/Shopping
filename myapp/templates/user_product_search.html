@@ -1,0 +1,19 @@
+{% include 'hearder.html' %}
+
+<div class="row">
+  
+    {% for i in product %}
+    <div class="col-sm-3" style="margin-bottom: 100px">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{i.product_image.url}}" alt="Card image cap" width="250px" height="250px">
+        <div class="card-body">
+          <h5 class="card-title">Brand : {{i.product_brand}}</h5>
+          <h5 class="card-title">Price : {{i.product_price}}</h5>
+          <h5 class="card-title">Desc : {{i.product_desc}}</h5>
+          <p class="card-title">Saller : {{i.saller.fname}}</p>
+          <a href="{% url 'user_details_product' pid=i.pk %}" class="btn btn-primary">More Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>

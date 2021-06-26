@@ -1,0 +1,27 @@
+{% include 'hearder.html' %}
+
+<div class="row">
+
+	<div class="col-sm-3">
+		<div class="card" style="width: 21rem;">
+			<img class="card-img-top" src="{{product.product_image.url}}" alt="Card image cap" width="250px" height="250px">
+			<div class="card-body" style="width: 350px;">
+				<h5 class="card-title">Brand : {{product.product_brand}}</h5>
+				<h5 class="card-title">Price : {{product.product_price}}</h5>
+				<h5 class="card-title">Description : {{product.product_desc}}</h5>
+				{% if flag1 %}
+					<a href="{% url 'remove_from_cart' pk=product.pk %}" class="btn btn-primary">Delete Cart</a>
+				{% else %}
+					<a href="{% url 'add_to_cart' pk=product.pk %}" class="btn btn-primary">Add To Cart</a>
+				{% endif %}
+
+				{% if flag %}
+					<a href="{% url 'remove_from_wishlist' pk=product.pk %}" class="btn btn-primary">Delete Wishlist</a>
+				{% else %}
+					<a href="{% url 'add_to_wishlist' pk=product.pk %}" class="btn btn-primary">Add To Wishlist</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+</div>

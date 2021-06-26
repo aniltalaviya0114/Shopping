@@ -1,0 +1,18 @@
+{% include 'saller_index.html' %}
+
+<div class="row">
+
+	<div class="col-sm-3">
+		<div class="card" style="width: 21rem;">
+			<img class="card-img-top" src="{{product.product_image.url}}" alt="Card image cap" width="250px" height="250px">
+			<div class="card-body" style="width: 350px;">
+				<h5 class="card-title">Brand : {{product.product_brand}}</h5>
+				<h5 class="card-title">Price : {{product.product_price}}</h5>
+				<h5 class="card-title">Description : {{product.product_desc}}</h5>
+				<a href="{% url 'saller_edit_product' pk=product.pk %}" class="btn btn-primary">Edit Product</a>
+				<a href="{% url 'saller_delete_product' pk=product.pk %}" class="btn btn-primary">Delete Product</a>
+			</div>
+		</div>
+	</div>
+
+</div>
